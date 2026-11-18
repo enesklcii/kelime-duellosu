@@ -2,7 +2,7 @@
 
 **Kelime Düellosu**, İngilizce kelime ezberlemeyi rekabetçi ve eğlenceli hale getirmek için geliştirilmiş, gerçek zamanlı (real-time) çok oyunculu bir web oyunudur.
 
-🔗 **Canlı Demo:** [://onrender.com](https://://onrender.com)
+🔗 **Canlı Demo:** https://kelime-duellosu-1dr4.onrender.com
 
 ---
 
