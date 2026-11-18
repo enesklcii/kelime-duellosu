@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Kelime Düellosu Pro</title>
+  <style>
+    * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { margin: 0; padding: 15px; background: #121212; color: #fff; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
+    .kutu { width: 100%; max-width: 420px; background: #1e1e2e; padding: 20px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); text-align: center; }
+    h1 { margin-top: 0; color: #00d2ff; font-size: 26px; }
+    input, select { width: 100%; padding: 14px; margin: 8px 0; border: none; border-radius: 10px; font-size: 16px; background: #2b2b3d; color: #fff; text-align: center; }
+    button { width: 100%; padding: 15px; margin: 8px 0; border: none; border-radius: 12px; font-size: 18px; font-weight: bold; cursor: pointer; transition: 0.15s; }
+    .btn-ana { background: #00d2ff; color: #121212; }
+    .btn-bot { background: #a6e3a1; color: #121212; }
+    .btn-ikincil { background: #313244; color: #cdd6f4; font-size: 15px; padding: 12px; }
+    .btn-sik { background: #2b2b3d; color: #fff; border: 2px solid #3f3f5a; }
+    .btn-sik:disabled { opacity: 0.6; cursor: not-allowed; }
+    .dogru-sik { background: #a6e3a1 !important; color: #121212 !important; border-color: #a6e3a1 !important; opacity: 1 !important; }
+    .skor-panosu { display: flex; justify-content: space-around; background: #2b2b3d; padding: 10px; border-radius: 10px; margin-bottom: 12px; flex-wrap: wrap; gap: 8px; }
+    .oyuncu-kart { font-size: 15px; font-weight: bold; color: #a6e3a1; background: #1e1e2e; padding: 6px 12px; border-radius: 8px; }
+    .ust-bilgi { display: flex; justify-content: space-between; align-items: center; font-size: 13px; color: #9399b2; margin-bottom: 8px; }
+    .cikis-btn { width: auto; padding: 5px 10px; margin: 0; font-size: 12px; background: #45475a; color: #f38ba8; border-radius: 8px; }
+    .sure-cubugu-dis { width: 100%; height: 8px; background: #2b2b3d; border-radius: 4px; overflow: hidden; margin-bottom: 12px; }
+    .sure-cubugu-ic { height: 100%; width: 100%; background: #f9e2af; }
+    .kelime-ekrani { font-size: 32px; font-weight: bold; margin: 16px 0; padding: 20px; background: #252538; border-radius: 12px; color: #f9e2af; }
+    #durumMesaji { font-size: 16px; margin: 8px 0; min-height: 24px; font-weight: bold; }
+    .hata-defteri { background: #252538; border-radius: 12px; padding: 12px; margin: 15px 0; text-align: left; max-height: 200px; overflow-y: auto; }
+    .hata-defteri h3 { margin: 0 0 8px 0; font-size: 15px; color: #f38ba8; text-align: center; }
+    .hata-satir { display: flex; justify-content: space-between; padding: 6px 8px; border-bottom: 1px solid #313244; font-size: 14px; }
+    .gizli { display: none; }
+  </style>
+</head>
+<body>
+  <div id="girisEkrani" class="kutu">
+    <h1>⚔️ Kelime Düellosu</h1>
+    <div id="baglantiDurumu" style="font-size:13px; color:#f9e2af; margin-bottom:8px;">Sunucuya bağlanılıyor...</div>
+    <input type="text" id="isimInput" placeholder="Adın (Örn: Ahmet)" maxlength="12">
+    <input type="text" id="odaInput" placeholder="Oda Kodu (Örn: 1234)" maxlength="6">
+    <select id="kategoriInput">
+      <option value="hepsi">📚 Kategori: Karışık (Hepsi)</option>
+      <option value="gunluk">🏠 Günlük Kelimeler</option>
+      <option value="fiiller">⚡ Fiiller (Verbs)</option>
+      <option value="soyut">🧠 Soyut Kavramlar</option>
+    </select>
+    <button class="btn-ana" onclick="oyunaGir(false)">👥 Odaya Katıl (Çok Oyunculu)</button>
+    <div style="display:flex; gap:8px; align-items:center;">
+      <select id="botZorlukInput" style="width:42%; margin:8px 0;">
+        <option value="kolay">🐢 Kolay</option>
+        <option value="orta" selected>⚡ Orta</option>
+        <option value="zor">🔥 Zor</option>
+      </select>
+      <button class="btn-bot" style="width:58%;" onclick="oyunaGir(true)">🤖 Bota Karşı</button>
+    </div>
+    <button class="btn-ikincil" onclick="ekranDegistir('kelimeEkleEkrani')">➕ Havuza Yeni Kelime Ekle</button>
+  </div>
+
+  <div id="kelimeEkleEkrani" class="kutu gizli">
+    <h1>➕ Yeni Kelime Ekle</h1>
+    <input type="text" id="yeniTr" placeholder="Türkçe Anlamı (Örn: Kitap)">
+    <input type="text" id="yeniEn" placeholder="İngilizcesi (Örn: Book)">
+    <select id="yeniKat">
+      <option value="gunluk">🏠 Günlük Kelimeler</option>
+      <option value="fiiller">⚡ Fiiller (Verbs)</option>
+      <option value="soyut">🧠 Soyut Kavramlar</option>
+    </select>
+    <div id="eklemeMesaji" style="font-size:14px; margin:8px 0; min-height:20px;"></div>
+    <button class="btn-ana" onclick="kelimeKaydet()">Kaydet</button>
+    <button class="btn-ikincil" onclick="ekranDegistir('girisEkrani')">⬅️ Geri Dön</button>
+  </div>
+
+  <div id="oyunEkrani" class="kutu gizli">
+    <div class="ust-bilgi">
+      <span id="kategoriEtiketi">Kategori: Karışık</span>
+      <span>🏆 100p</span>
+      <button class="cikis-btn" onclick="odadanAyril()">🚪 Çık</button>
+    </div>
+    <div id="skorPanosu" class="skor-panosu"></div>
+    <div class="sure-cubugu-dis"><div id="sureCubugu" class="sure-cubugu-ic"></div></div>
+    <div id="durumMesaji">Hazır mısınız?</div>
+    <div id="kelimeAlani" class="kelime-ekrani">Hazır mısınız?</div>
+    <div id="siklarAlani"></div>
+    <button id="baslatBtn" class="btn-ana" onclick="soruIste()">Oyunu Başlat</button>
+  </div>
+
+  <div id="bitisEkrani" class="kutu gizli">
+    <div style="font-size: 54px;">🏆</div>
+    <h1 id="sampiyonMetni">Şampiyon!</h1>
+    <div id="finalSkorlar" class="skor-panosu"></div>
+    <div id="hataDefteriAlani" class="hata-defteri"></div>
+    <button class="btn-ana" onclick="tekrarOyna()">Tekrar Oyna</button>
+    <button class="btn-ikincil" onclick="odadanAyril()">🏠 Ana Menüye Dön</button>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

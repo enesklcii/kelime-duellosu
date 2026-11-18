@@ -1,0 +1,38 @@
+{
+  "gunluk": [
+    { "tr": "Elma", "en": "Apple", "siklar": ["Apple", "Banana", "Car", "House"] },
+    { "tr": "Gelecek", "en": "Future", "siklar": ["Past", "History", "Future", "Memory"] },
+    { "tr": "Hız", "en": "Speed", "siklar": ["Weight", "Height", "Speed", "Distance"] },
+    { "tr": "Hikaye", "en": "Story", "siklar": ["Fact", "Story", "News", "Report"] },
+    { "tr": "Farklı", "en": "Different", "siklar": ["Similar", "Same", "Different", "Equal"] },
+    { "tr": "Tehlike", "en": "Danger", "siklar": ["Safety", "Peace", "Danger", "Comfort"] },
+    { "tr": "Değişim", "en": "Change", "siklar": ["Same", "Habit", "Change", "Routine"] },
+    { "tr": "Hedef", "en": "Goal", "siklar": ["Start", "Goal", "Path", "End"] },
+    { "tr": "Çözüm", "en": "Solution", "siklar": ["Trouble", "Puzzle", "Solution", "Noise"] },
+    { "tr": "Fırsat", "en": "Opportunity", "siklar": ["Problem", "Opportunity", "Obstacle", "Limit"] }
+  ],
+  "fiiller": [
+    { "tr": "Geliştirmek", "en": "Improve", "siklar": ["Destroy", "Forget", "Improve", "Sleep"] },
+    { "tr": "Keşfetmek", "en": "Discover", "siklar": ["Hide", "Discover", "Break", "Follow"] },
+    { "tr": "Söz Vermek", "en": "Promise", "siklar": ["Refuse", "Promise", "Cancel", "Deny"] },
+    { "tr": "Hatırlamak", "en": "Remember", "siklar": ["Forget", "Ignore", "Remember", "Delete"] },
+    { "tr": "Kazanmak", "en": "Win", "siklar": ["Lose", "Quit", "Win", "Draw"] },
+    { "tr": "Açıklamak", "en": "Explain", "siklar": ["Confuse", "Explain", "Hide", "Ask"] },
+    { "tr": "Başarmak", "en": "Achieve", "siklar": ["Fail", "Achieve", "Stop", "Wait"] },
+    { "tr": "Karar Vermek", "en": "Decide", "siklar": ["Doubt", "Decide", "Hesitate", "Ignore"] },
+    { "tr": "Koruma Sağlamak", "en": "Protect", "siklar": ["Attack", "Protect", "Damage", "Leave"] },
+    { "tr": "Paylaşmak", "en": "Share", "siklar": ["Keep", "Steal", "Share", "Hide"] }
+  ],
+  "soyut": [
+    { "tr": "Başarı", "en": "Success", "siklar": ["Failure", "Success", "Journey", "Dream"] },
+    { "tr": "Özgürlük", "en": "Freedom", "siklar": ["Prison", "Freedom", "Danger", "Silence"] },
+    { "tr": "Sabır", "en": "Patience", "siklar": ["Anger", "Speed", "Patience", "Luck"] },
+    { "tr": "Cesaret", "en": "Courage", "siklar": ["Fear", "Courage", "Weakness", "Doubt"] },
+    { "tr": "Sorumluluk", "en": "Responsibility", "siklar": ["Freedom", "Hobby", "Responsibility", "Game"] },
+    { "tr": "Deneyim", "en": "Experience", "siklar": ["Beginner", "Experience", "Theory", "Guess"] },
+    { "tr": "Güven", "en": "Trust", "siklar": ["Doubt", "Trust", "Secret", "Lie"] },
+    { "tr": "Yetenek", "en": "Ability", "siklar": ["Ability", "Weakness", "Excuse", "Luck"] },
+    { "tr": "Bilgi", "en": "Knowledge", "siklar": ["Ignorance", "Rumor", "Knowledge", "Opinion"] },
+    { "tr": "Karar", "en": "Decision", "siklar": ["Decision", "Mistake", "Question", "Answer"] }
+  ]
+}
